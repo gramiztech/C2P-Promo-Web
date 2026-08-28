@@ -1,4 +1,4 @@
-# C2P — Promo Développement Web
+# C2P - Promo Développement Web
 
 Ce dépôt regroupe tout ce qui concerne la formation : les cours, les ressources, et le travail de chaque équipe des ateliers du dimanche.
 
@@ -18,7 +18,7 @@ Va dans `cours/`. Chaque séance a son propre dossier (`seance-01-html`, `seance
 
 ## Si tu cherches le travail d'une équipe
 
-Va dans `ateliers/`. Les équipes changent chaque dimanche, donc on range par date, pas par nom d'équipe fixe. Le dossier `ateliers/modele-equipe/` contient un modèle à copier — voir `CONTRIBUER.md` pour la marche à suivre.
+Va dans `ateliers/`. Les équipes changent chaque dimanche, donc on range par date, pas par nom d'équipe fixe. Le dossier `ateliers/modele-equipe/` contient un modèle à copier - voir `CONTRIBUER.md` pour la marche à suivre.
 
 ## Si tu veux voir le vrai site
 

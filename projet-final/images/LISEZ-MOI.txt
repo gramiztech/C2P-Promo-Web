@@ -1,1 +1,1 @@
-Les vraies images (logo-c2p.png, imageCommu.png, photo_membres.jpg) sont à ajouter ici. Elles ne sont pas dans le dépôt d'exemple — glisse simplement les fichiers réels dans ce dossier, avec les mêmes noms que ceux utilisés dans le HTML.
+Les vraies images (logo-c2p.png, imageCommu.png, photo_membres.jpg) sont à ajouter ici. Elles ne sont pas dans le dépôt d'exemple - glisse simplement les fichiers réels dans ce dossier, avec les mêmes noms que ceux utilisés dans le HTML.

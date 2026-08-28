@@ -1,4 +1,4 @@
-# Séance 1 — Les fondations du HTML
+# Séance 1 - Les fondations du HTML
 
 **Date :** 23 août 2026
 

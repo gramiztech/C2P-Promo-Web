@@ -1,4 +1,4 @@
-# Équipe 1 — exemple, à supprimer une fois le premier vrai atelier passé
+# Équipe 1 - exemple, à supprimer une fois le premier vrai atelier passé
 
 Ce dossier n'est pas un vrai atelier. C'est un exemple, pour montrer à quoi doit ressembler un dossier d'équipe rempli.
 
@@ -22,7 +22,7 @@ Le `box-sizing: border-box` réglé en premier, avant même de commencer le styl
 
 ## Ce qui n'a pas marché
 
-On a perdu du temps parce qu'une image dépassait de sa carte. On avait oublié `max-width: 100%` sur les images — c'était dans le cours, on ne l'avait juste pas encore réutilisé nous-mêmes.
+On a perdu du temps parce qu'une image dépassait de sa carte. On avait oublié `max-width: 100%` sur les images - c'était dans le cours, on ne l'avait juste pas encore réutilisé nous-mêmes.
 
 ## Le code
 

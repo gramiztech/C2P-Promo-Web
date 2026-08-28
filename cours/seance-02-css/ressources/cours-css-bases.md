@@ -1,6 +1,6 @@
-# Les bases du CSS — support de séance C2P
+# Les bases du CSS - support de séance C2P
 
-Ce document couvre la théorie de la séance. On avance notion par notion, avec juste assez de code pour illustrer chaque idée — la pratique complète, c'est pour l'atelier.
+Ce document couvre la théorie de la séance. On avance notion par notion, avec juste assez de code pour illustrer chaque idée - la pratique complète, c'est pour l'atelier.
 
 ---
 
@@ -10,7 +10,7 @@ En 2003, un designer nommé Dave Shea a lancé un site appelé **CSS Zen Garden*
 
 C'est la meilleure démonstration de ce qu'on répète depuis la séance 1 : le HTML porte le contenu, le CSS porte l'apparence. Ce sont deux métiers différents, dans deux fichiers différents.
 
-Le CSS lui-même est né en 1996, deux ans avant que les navigateurs ne commencent à bien le prendre en charge. Avant lui, les développeurs empilaient des tableaux HTML et des images invisibles juste pour positionner des éléments sur la page — une technique qui a existé, mais qui n'a plus sa place aujourd'hui.
+Le CSS lui-même est né en 1996, deux ans avant que les navigateurs ne commencent à bien le prendre en charge. Avant lui, les développeurs empilaient des tableaux HTML et des images invisibles juste pour positionner des éléments sur la page - une technique qui a existé, mais qui n'a plus sa place aujourd'hui.
 
 ---
 
@@ -49,10 +49,10 @@ p {
 }
 ```
 On la lit ainsi :
-- `p` : le **sélecteur** — à qui s'adresse cette règle (ici, tous les paragraphes).
-- `{ }` : le **bloc de déclaration** — ce qui est entre les accolades.
-- `color` : la **propriété** — ce qu'on modifie.
-- `blue` : la **valeur** — comment on le modifie.
+- `p` : le **sélecteur** - à qui s'adresse cette règle (ici, tous les paragraphes).
+- `{ }` : le **bloc de déclaration** - ce qui est entre les accolades.
+- `color` : la **propriété** - ce qu'on modifie.
+- `blue` : la **valeur** - comment on le modifie.
 - `color: blue;` dans son ensemble : une **déclaration**. On peut en empiler plusieurs dans un même bloc, chacune terminée par un point-virgule.
 
 Retenir ce vocabulaire précis aide énormément une fois qu'on cherche de l'aide en ligne : la documentation et les messages d'erreur utilisent ces mots.
@@ -63,14 +63,14 @@ Retenir ce vocabulaire précis aide énormément une fois qu'on cherche de l'aid
 
 Le sélecteur, c'est la question qu'on pose : "à qui je parle ?"
 
-**Sélecteur d'élément** — tous les éléments d'un type :
+**Sélecteur d'élément** - tous les éléments d'un type :
 ```css
 p {
   color: black;
 }
 ```
 
-**Sélecteur de classe** — un groupe qu'on choisit soi-même, avec un point :
+**Sélecteur de classe** - un groupe qu'on choisit soi-même, avec un point :
 ```css
 .carte {
   background-color: white;
@@ -81,7 +81,7 @@ p {
 ```
 C'est le sélecteur le plus utilisé en pratique, parce qu'on peut le poser sur autant d'éléments qu'on veut, même de types différents.
 
-**Sélecteur d'identifiant** — un seul élément précis, avec un dièse :
+**Sélecteur d'identifiant** - un seul élément précis, avec un dièse :
 ```css
 #header-principal {
   background-color: navy;
@@ -90,16 +90,16 @@ C'est le sélecteur le plus utilisé en pratique, parce qu'on peut le poser sur 
 ```html
 <header id="header-principal">...</header>
 ```
-Un `id` ne doit apparaître qu'une seule fois par page (contrairement à une classe). On le réserve pour un usage bien particulier — souvent pas pour le style, mais pour être ciblé par du JavaScript ou par un lien d'ancre.
+Un `id` ne doit apparaître qu'une seule fois par page (contrairement à une classe). On le réserve pour un usage bien particulier - souvent pas pour le style, mais pour être ciblé par du JavaScript ou par un lien d'ancre.
 
-**Sélecteur universel** — absolument tout :
+**Sélecteur universel** - absolument tout :
 ```css
 * {
   box-sizing: border-box;
 }
 ```
 
-**Sélecteur descendant** — un élément à l'intérieur d'un autre :
+**Sélecteur descendant** - un élément à l'intérieur d'un autre :
 ```css
 header a {
   color: blue;
@@ -113,11 +113,11 @@ Ici, ça ne cible que les liens `<a>` qui sont dans un `<header>`, pas tous les 
 
 Si deux règles CSS visent le même élément avec la même propriété, laquelle gagne ? C'est ce qu'on appelle **la cascade**, et elle suit un ordre précis :
 
-1. **L'importance** : une règle avec `!important` gagne presque toujours (à éviter — si on en a besoin, c'est souvent le signe que la structure du CSS a un problème ailleurs).
+1. **L'importance** : une règle avec `!important` gagne presque toujours (à éviter - si on en a besoin, c'est souvent le signe que la structure du CSS a un problème ailleurs).
 2. **La spécificité** : voir section suivante.
 3. **L'ordre d'écriture** : à spécificité égale, la règle écrite en dernier dans le fichier gagne.
 
-**L'héritage** est un mécanisme voisin mais différent : certaines propriétés, comme `color` ou `font-family`, se transmettent automatiquement d'un élément à ses enfants, sauf si on les redéfinit. D'autres, comme `border` ou `padding`, ne s'héritent jamais — chaque élément doit les recevoir explicitement.
+**L'héritage** est un mécanisme voisin mais différent : certaines propriétés, comme `color` ou `font-family`, se transmettent automatiquement d'un élément à ses enfants, sauf si on les redéfinit. D'autres, comme `border` ou `padding`, ne s'héritent jamais - chaque élément doit les recevoir explicitement.
 
 ---
 
@@ -174,7 +174,7 @@ En CSS, **chaque élément HTML est une boîte rectangulaire**, même s'il ne le
 - `border` : le trait qui délimite la boîte.
 - `margin` : l'espace entre cette boîte et ses voisines.
 
-**Le piège à connaître absolument** : par défaut, `width` ne fixe que le `content`. Si on ajoute du `padding` ou une `border`, la boîte devient plus large que le `width` qu'on a écrit — ça surprend tout le monde une fois.
+**Le piège à connaître absolument** : par défaut, `width` ne fixe que le `content`. Si on ajoute du `padding` ou une `border`, la boîte devient plus large que le `width` qu'on a écrit - ça surprend tout le monde une fois.
 
 La solution, une seule ligne qu'on pose presque toujours en haut de son fichier :
 ```css
@@ -196,7 +196,7 @@ Avec `border-box`, `padding` et `border` sont comptés **à l'intérieur** du `w
 | `rem` | Relatif à la taille de police de la racine (`html`) | tailles de police cohérentes sur toute la page |
 | `vw` / `vh` | Pourcentage de la largeur / hauteur de la fenêtre | éléments qui suivent la taille de l'écran |
 
-Règle simple à retenir : pour la taille du texte, `rem` est le choix par défaut le plus sûr — si quelqu'un agrandit le texte dans son navigateur (pour des raisons d'accessibilité), tout reste cohérent, parce que tout part de la même référence.
+Règle simple à retenir : pour la taille du texte, `rem` est le choix par défaut le plus sûr - si quelqu'un agrandit le texte dans son navigateur (pour des raisons d'accessibilité), tout reste cohérent, parce que tout part de la même référence.
 
 ---
 
@@ -208,7 +208,7 @@ color: tomato;                 /* mot-clé, environ 150 disponibles */
 color: #1683D0;                /* hexadécimal : rouge-vert-bleu en base 16 */
 color: rgb(22, 131, 208);      /* rouge, vert, bleu, de 0 à 255 chacun */
 ```
-Le format hexadécimal (`#1683D0`) est le plus utilisé en pratique — c'est celui que produit n'importe quel outil de sélection de couleur, et c'est celui qu'on retrouve dans les variables du site de C2P.
+Le format hexadécimal (`#1683D0`) est le plus utilisé en pratique - c'est celui que produit n'importe quel outil de sélection de couleur, et c'est celui qu'on retrouve dans les variables du site de C2P.
 
 On peut ajouter une transparence avec `rgba()`, un quatrième nombre entre 0 (invisible) et 1 (opaque) :
 ```css
@@ -228,9 +228,9 @@ p {
   text-align: left;
 }
 ```
-- `font-family` : on donne toujours plusieurs polices, séparées par des virgules — si la première n'est pas installée sur l'appareil de la personne, le navigateur essaie la suivante.
-- `font-weight` : l'épaisseur du trait (`400` normal, `700` gras — on peut aussi écrire `normal` et `bold`).
-- `line-height` : l'espace entre les lignes. Sans lui, un paragraphe de plusieurs lignes est difficile à lire — une valeur autour de `1.5` à `1.6` convient à la plupart des textes.
+- `font-family` : on donne toujours plusieurs polices, séparées par des virgules - si la première n'est pas installée sur l'appareil de la personne, le navigateur essaie la suivante.
+- `font-weight` : l'épaisseur du trait (`400` normal, `700` gras - on peut aussi écrire `normal` et `bold`).
+- `line-height` : l'espace entre les lignes. Sans lui, un paragraphe de plusieurs lignes est difficile à lire - une valeur autour de `1.5` à `1.6` convient à la plupart des textes.
 
 ---
 
@@ -240,7 +240,7 @@ p {
 - `block` : prend toute la largeur disponible, saute une ligne avant et après (`<div>`, `<p>`, `<h1>`).
 - `inline` : ne prend que la largeur de son contenu, reste dans le fil du texte (`<a>`, `<span>`).
 - `inline-block` : reste dans le fil du texte, mais accepte `width`/`height`/`margin` comme un `block`.
-- `flex` et `grid` : des modes de mise en page pour organiser plusieurs éléments ensemble (on les creuse dans une séance dédiée — le header et les cartes du site de C2P les utilisent déjà).
+- `flex` et `grid` : des modes de mise en page pour organiser plusieurs éléments ensemble (on les creuse dans une séance dédiée - le header et les cartes du site de C2P les utilisent déjà).
 
 `position` décide comment un élément se place par rapport au reste de la page :
 - `static` : le comportement par défaut, aucun positionnement spécial.
@@ -261,7 +261,7 @@ a:focus-visible {
   outline: 2px dashed green;
 }
 ```
-`:hover` s'applique pendant que la souris survole le lien. `:focus-visible` s'applique quand on y arrive au clavier (touche Tab) — c'est ce qui permet à quelqu'un qui n'utilise pas de souris de voir où il se trouve sur la page.
+`:hover` s'applique pendant que la souris survole le lien. `:focus-visible` s'applique quand on y arrive au clavier (touche Tab) - c'est ce qui permet à quelqu'un qui n'utilise pas de souris de voir où il se trouve sur la page.
 
 Un **pseudo-élément** crée quelque chose qui n'existe pas dans le HTML :
 ```css
@@ -272,7 +272,7 @@ Un **pseudo-élément** crée quelque chose qui n'existe pas dans le HTML :
   height: 20px;
 }
 ```
-`::before` et `::after` ajoutent un élément juste avant ou juste après le contenu réel, uniquement visuel — rien de tout ça n'apparaît si on lit le code source HTML. C'est la technique derrière les icônes et la ligne de contrôle du site de C2P.
+`::before` et `::after` ajoutent un élément juste avant ou juste après le contenu réel, uniquement visuel - rien de tout ça n'apparaît si on lit le code source HTML. C'est la technique derrière les icônes et la ligne de contrôle du site de C2P.
 
 ---
 
@@ -286,21 +286,21 @@ Une **media query** applique des règles CSS seulement si une condition sur l'é
   }
 }
 ```
-Ici, ces règles ne s'activent que si la largeur de la fenêtre est de 640 pixels ou moins — typiquement, un téléphone. En dehors de cette condition, elles sont simplement ignorées. C'est ce qui permet à une même page de s'afficher correctement sur un ordinateur et sur un téléphone, sans créer deux sites différents.
+Ici, ces règles ne s'activent que si la largeur de la fenêtre est de 640 pixels ou moins - typiquement, un téléphone. En dehors de cette condition, elles sont simplement ignorées. C'est ce qui permet à une même page de s'afficher correctement sur un ordinateur et sur un téléphone, sans créer deux sites différents.
 
 ---
 
 ## 13. Bonnes pratiques à prendre dès le début
 
-- **Nommer les classes par leur rôle, pas par leur apparence.** `.carte` plutôt que `.boite-blanche` — si un jour la carte change de couleur, le nom reste juste.
+- **Nommer les classes par leur rôle, pas par leur apparence.** `.carte` plutôt que `.boite-blanche` - si un jour la carte change de couleur, le nom reste juste.
 - **Organiser le fichier par sections**, avec des commentaires (`/* ... */`) qui annoncent chaque partie.
 - **Préférer les classes aux `id`** pour le style, et garder les `id` pour les cas où on a vraiment besoin d'un identifiant unique.
-- **Un seul fichier CSS pour commencer.** On sépare en plusieurs fichiers seulement quand un projet devient trop gros pour s'y retrouver — pas avant.
+- **Un seul fichier CSS pour commencer.** On sépare en plusieurs fichiers seulement quand un projet devient trop gros pour s'y retrouver - pas avant.
 
 ---
 
 ## 14. Pour aller plus loin
 
-- MDN (Mozilla) — la référence la plus complète et la plus fiable sur CSS, en français : developer.mozilla.org
-- web.dev/learn/css — un parcours structuré, par Google, gratuit
-- CSS Zen Garden (csszengarden.com) — pour voir la même page HTML habillée de centaines de façons différentes
+- MDN (Mozilla) - la référence la plus complète et la plus fiable sur CSS, en français : developer.mozilla.org
+- web.dev/learn/css - un parcours structuré, par Google, gratuit
+- CSS Zen Garden (csszengarden.com) - pour voir la même page HTML habillée de centaines de façons différentes

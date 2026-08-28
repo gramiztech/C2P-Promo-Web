@@ -1,4 +1,4 @@
-# Équipe — [date de l'atelier]
+# Équipe - [date de l'atelier]
 
 ## Qui était là
 

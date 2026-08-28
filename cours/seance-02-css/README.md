@@ -1,4 +1,4 @@
-# Séance 2 — Mettre en forme avec CSS
+# Séance 2 - Mettre en forme avec CSS
 
 **Date :** 28 août 2026
 
@@ -18,4 +18,4 @@ Le support complet de cette séance est dans `ressources/cours-css-bases.md`.
 
 ## À retenir avant la séance suivante
 
-La pratique complète sur ces notions se fait lors d'un atelier dédié — voir `ateliers/` à la racine du dépôt.
+La pratique complète sur ces notions se fait lors d'un atelier dédié - voir `ateliers/` à la racine du dépôt.

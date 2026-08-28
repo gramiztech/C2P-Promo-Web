@@ -16,6 +16,6 @@ ateliers/
 
 ## Avant de commencer un atelier
 
-Copie le dossier `modele-equipe/` dans un nouveau dossier daté du jour, un exemplaire par équipe. Chaque équipe remplit le sien à la fin de la séance — pas le lendemain, pas la semaine suivante.
+Copie le dossier `modele-equipe/` dans un nouveau dossier daté du jour, un exemplaire par équipe. Chaque équipe remplit le sien à la fin de la séance - pas le lendemain, pas la semaine suivante.
 
 La marche à suivre complète est dans `CONTRIBUER.md` à la racine du dépôt.
