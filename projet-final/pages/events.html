@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  events.html — programme des séances et ateliers
+
+  Point pédagogique de cette page : la liste d'événements est une
+  <ol> (liste ordonnée) et pas une <ul>, parce que l'ordre compte
+  vraiment ici : on suit les séances 1 à 6 dans le temps. C'est une
+  bonne occasion d'expliquer la différence entre <ul> et <ol> avec
+  un exemple où ça change réellement le sens.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — C2P</title>
+  <meta name="description" content="Le programme des séances et ateliers de la Communauté Premiers Pas.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header>
+    <a href="/index.html">
+      <img src="/images/logo-c2p.png" alt="Logo de la communauté C2P" width="80px">
+    </a>
+    <ul>
+      <li><a href="/pages/inscription.html">Rejoindre</a></li>
+      <li><a href="/pages/events.html">Events</a></li>
+      <li><a href="/pages/membres.html">Membres</a></li>
+      <li><a href="/pages/about.html">A propos</a></li>
+    </ul>
+    <button type="button" class="theme-buton" aria-label="Changer de thème">◌</button>
+  </header>
+
+  <main>
+    <h1>Le programme</h1>
+    <p>
+      Six séances le vendredi, un atelier pratique le dimanche pour
+      mettre en application ce qu'on vient d'apprendre. À remplacer
+      ci-dessous par les vraies dates de la promotion en cours.
+    </p>
+
+    <!--
+      <ol> : l'ordre des séances porte une information réelle
+      (on ne peut pas suivre la séance 3 avant la séance 2).
+      Chaque <li> reste court ; le détail va dans une balise <time>
+      qui donne une date lisible à la fois pour un humain et pour
+      une machine (attribut datetime).
+    -->
+    <ol class="liste-seances">
+      <li>
+        <h2>Séance 1 — Les fondations du HTML</h2>
+        <p><time datetime="2026-08-23">23 août 2026</time> — structure d'une page, balises, attributs.</p>
+      </li>
+      <!-- Les séances 2 à 6 sont des exemples à remplacer par les
+           vraies dates : on garde la structure <time datetime="...">
+           pour que la démonstration soit complète, sans inventer de
+           dates précises pour des séances pas encore fixées. -->
+      <li>
+        <h2>Séance 2 — Mettre en forme avec CSS</h2>
+        <p><time datetime="2026-09-04">Date à confirmer</time> — sélecteurs, couleurs, mise en page.</p>
+      </li>
+      <li>
+        <h2>Séance 3 — À définir</h2>
+        <p><time datetime="2026-09-11">Date à confirmer</time> — programme à confirmer.</p>
+      </li>
+      <li>
+        <h2>Séance 4 — À définir</h2>
+        <p><time datetime="2026-09-18">Date à confirmer</time> — programme à confirmer.</p>
+      </li>
+      <li>
+        <h2>Séance 5 — À définir</h2>
+        <p><time datetime="2026-09-25">Date à confirmer</time> — programme à confirmer.</p>
+      </li>
+      <li>
+        <h2>Séance 6 — Mise en ligne du projet</h2>
+        <p><time datetime="2026-10-02">Date à confirmer</time> — chaque équipe déploie son site.</p>
+      </li>
+    </ol>
+  </main>
+
+  <footer>
+    <nav aria-label="Liens du pied de page">
+      <ul>
+        <li><a href="/index.html">Accueil</a></li>
+        <li><a href="/pages/about.html">A propos</a></li>
+        <li><a href="/pages/events.html">Events</a></li>
+        <li><a href="/pages/membres.html">Membres</a></li>
+        <li><a href="/pages/inscription.html">Rejoindre</a></li>
+      </ul>
+    </nav>
+    <p>Communauté Premiers Pas (C2P) — Lomé, Togo</p>
+  </footer>
+
+</body>
+</html>

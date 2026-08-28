@@ -1,0 +1,647 @@
+/* ============================================================
+   style.css — feuille de style unique du site C2P
+   (Communauté Premiers Pas)
+
+   Un seul fichier plutôt qu'un fichier par page : plus simple à
+   suivre pour l'instant, et les pages partagent presque tout
+   (header, footer, couleurs, typographies). Le fichier est
+   organisé en sections, dans l'ordre où on lit une page :
+     1. Ressources et variables
+     2. Base / reset
+     3. En-tête (header, nav, logo, bouton de thème)
+     4. Contenu commun (titres, liens, conteneur)
+     5. Page d'accueil (hero, cartes "comment on apprend")
+     6. Page events (liste des séances)
+     7. Page membres (photo + légende)
+     8. Page inscription (formulaire)
+     9. Pied de page
+    10. Accessibilité et confort
+    11. Responsive (petits écrans)
+
+   Ressources utilisées pour cette feuille, à garder sous la main
+   ce soir si des questions viennent sur le pourquoi de tel choix :
+   - clamp() : https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+   - grille CSS : https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout
+   ============================================================ */
+
+
+/* ---------- 1. RESSOURCES ET VARIABLES ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+  /* Palette : deux couleurs de marque (bleu plan, vert rebar),
+     le reste sert de fond ou de texte. On limite le nombre de
+     couleurs pour que le bleu et le vert restent reconnaissables. */
+  --plan-navy: #020F1D;
+  --plan-navy-deep: #01080f;
+  --plan-bleu: #1683D0;
+  --plan-bleu-fade: rgba(22, 131, 208, 0.18);
+  --beton: #95acc3;
+  --beton-clair: #a9bccf;
+  --beton-sombre: #7d93aa;
+  --rebar-vert: #0bd42d;
+  --rebar-vert-sombre: #079020;
+  --encre: #101820;
+  --blanc: #ffffff;
+  --papier: #f3ecdb;
+  --papier-ombre: rgba(2, 15, 29, 0.3);
+
+  --police-titre: 'Space Grotesk', system-ui, sans-serif;
+  --police-code: 'JetBrains Mono', ui-monospace, monospace;
+  --police-texte: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  /* Un seul endroit pour la largeur maximale du contenu : si on
+     veut l'élargir un jour, on change cette ligne et tout suit. */
+  --largeur-contenu: 1100px;
+}
+
+
+/* ---------- 2. BASE / RESET ---------- */
+
+* {
+  /* box-sizing: border-box fait que padding et border sont comptés
+     DANS la largeur qu'on donne à un élément, pas ajoutés par-dessus.
+     Sans ça, un élément à width: 100% + padding déborde toujours
+     un peu de son parent. C'est presque toujours ce qu'on veut. */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--police-texte);
+  color: var(--encre);
+  line-height: 1.6;
+  position: relative;
+  isolation: isolate;
+
+  background-color: var(--beton);
+  background-image:
+    repeating-linear-gradient(0deg, var(--plan-bleu-fade) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(90deg, var(--plan-bleu-fade) 0 1px, transparent 1px 96px),
+    radial-gradient(circle at 15% 0%, var(--beton-clair) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, var(--beton-sombre) 0%, transparent 55%);
+}
+
+/* Ligne de contrôle sous le header : le repère qu'on trace sur un
+   chantier à la jonction entre le plan et le béton coulé. */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--plan-bleu) 0 2px,
+    transparent 2px 16px
+  );
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+img {
+  /* Empêche une image plus large que son conteneur de déborder,
+     tout en gardant ses proportions. */
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ---------- 3. EN-TÊTE ---------- */
+
+header {
+  position: relative;
+  border-bottom-right-radius: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--plan-navy);
+  background-image:
+    repeating-linear-gradient(0deg, var(--plan-bleu-fade) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, var(--plan-bleu-fade) 0 1px, transparent 1px 24px),
+    linear-gradient(180deg, var(--plan-navy) 0%, var(--plan-navy-deep) 100%);
+  box-shadow: 0 12px 24px -12px rgba(2, 15, 29, 0.6);
+}
+
+header img {
+  width: 80px;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  border: 2px solid var(--rebar-vert-sombre);
+  background-color: var(--plan-navy);
+}
+
+header ul {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+header a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--police-code);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--plan-bleu);
+  letter-spacing: 0.02em;
+  transition: color 0.18s ease;
+}
+
+/* Icônes de navigation en SVG, pas en emoji ni en image importée.
+   La technique : le SVG sert de "pochoir" (mask-image) et c'est
+   background-color: currentColor qui donne la couleur réelle.
+   Avantage direct : l'icône change de couleur toute seule au survol,
+   en même temps que le texte du lien, sans dupliquer le SVG par
+   couleur. -webkit-mask-* est nécessaire pour Safari, qui ne
+   reconnaît pas encore mask-image sans préfixe. */
+header a::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+header a[href*="inscription"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpolyline points='10 17 15 12 10 7'/%3E%3Cline x1='15' y1='12' x2='3' y2='12'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpolyline points='10 17 15 12 10 7'/%3E%3Cline x1='15' y1='12' x2='3' y2='12'/%3E%3C/svg%3E");
+}
+
+header a[href*="events"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+}
+
+header a[href*="membres"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+}
+
+header a[href*="about"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E");
+}
+
+header a:hover {
+  color: var(--rebar-vert);
+}
+
+.theme-buton {
+  width: 34px;
+  height: 20px;
+  border: 1px solid rgba(11, 212, 45, 0.5);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 50%, var(--rebar-vert) 0 6px, transparent 7px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.25));
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.35),
+    0 0 8px rgba(11, 212, 45, 0.45);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.theme-buton:hover {
+  transform: scale(1.08);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.35),
+    0 0 14px rgba(11, 212, 45, 0.7);
+}
+
+
+/* ---------- 4. CONTENU COMMUN ---------- */
+
+main,
+footer nav {
+  /* On centre le contenu et on l'empêche de s'étaler sur toute la
+     largeur d'un écran de bureau, où des lignes de texte trop
+     longues deviennent difficiles à lire. */
+  max-width: var(--largeur-contenu);
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+h1, h2, h3 {
+  font-family: var(--police-titre);
+  line-height: 1.2;
+  color: var(--plan-navy);
+}
+
+/* clamp(minimum, valeur préférée, maximum) : le titre suit la
+   largeur de l'écran (la partie en vw) mais sans jamais descendre
+   sous 1.8rem ni dépasser 3rem. Une seule ligne remplace plusieurs
+   media queries. Référence : voir le lien clamp() en haut du fichier. */
+h1 {
+  font-size: clamp(1.8rem, 4vw + 1rem, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.5vw + 0.8rem, 2rem);
+}
+
+main a {
+  color: var(--plan-bleu);
+}
+
+main a:hover {
+  color: var(--rebar-vert-sombre);
+}
+
+
+/* ---------- 5. PAGE D'ACCUEIL ---------- */
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+  padding-top: 24px;
+}
+
+.hero-texte {
+  flex: 1 1 320px;
+}
+
+.hero-image {
+  flex: 1 1 260px;
+  max-width: 340px;
+  border-radius: 12px;
+  border: 3px solid var(--plan-navy);
+}
+
+.bouton-principal {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--police-code);
+}
+
+/* Trois cartes de largeur égale qui s'adaptent au nombre de
+   colonnes possibles : repeat(auto-fit, minmax(...)) crée autant
+   de colonnes de 240px minimum que la largeur le permet, et les
+   étire pour combler l'espace restant. Sur mobile, ça retombe
+   naturellement sur une seule colonne, sans media query dédiée.
+   Référence : voir le lien "grille CSS" en haut du fichier. */
+.approche {
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.approche h2 {
+  margin-bottom: 4px;
+}
+
+@media (min-width: 640px) {
+  .approche {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  /* Le titre h2 tient sur toute la largeur même en mode grille */
+  .approche h2 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Fiches de chantier : le bord droit d'une feuille de papier
+   arrachée d'un carnet, pas un rectangle à coins arrondis. Chaque
+   fiche est légèrement inclinée, comme épinglée un peu de travers
+   sur un panneau de chantier, et se redresse au survol : une
+   micro-interaction qui a un sens (on "prend" la fiche), pas juste
+   un effet gratuit. */
+.carte {
+  position: relative;
+  background-color: var(--papier);
+  clip-path: polygon(
+    0% 8%, 6% 3%, 12% 7%, 18% 2%, 24% 6%, 30% 1%, 36% 5%,
+    42% 2%, 48% 6%, 54% 1%, 60% 5%, 66% 2%, 72% 6%, 78% 1%,
+    84% 5%, 90% 2%, 96% 6%, 100% 3%, 100% 100%, 0% 100%
+  );
+  padding: 30px 20px 20px;
+  box-shadow: 0 10px 18px -8px var(--papier-ombre);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carte:nth-child(1) { transform: rotate(-1.4deg); }
+.carte:nth-child(2) { transform: rotate(1deg) translateY(16px); }
+.carte:nth-child(3) { transform: rotate(-0.6deg) translateY(-6px); }
+
+.carte:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 16px 24px -10px var(--papier-ombre);
+}
+
+/* La "punaise" qui tient la fiche : un cercle en dégradé, coloré
+   avec currentColor pour reprendre l'accent propre à chaque carte
+   (défini juste en dessous, sur :nth-child). */
+.carte::after {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, currentColor 65%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* Les trois cartes se ressemblaient trop : même bordure verte,
+   même icône absente. On garde la même structure (cohérence) mais
+   on varie l'accent et on ajoute une icône propre à chaque carte,
+   avec la même technique mask-image + currentColor que dans le
+   header. Ça casse l'uniformité sans casser la cohérence. */
+.carte::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 12px;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.carte:nth-child(1) {
+  color: var(--rebar-vert-sombre);
+}
+.carte:nth-child(1)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E");
+}
+
+.carte:nth-child(2) {
+  color: var(--plan-bleu);
+}
+.carte:nth-child(2)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='17 1 21 5 17 9'/%3E%3Cpath d='M3 11V9a4 4 0 0 1 4-4h14'/%3E%3Cpolyline points='7 23 3 19 7 15'/%3E%3Cpath d='M21 13v2a4 4 0 0 1-4 4H3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='17 1 21 5 17 9'/%3E%3Cpath d='M3 11V9a4 4 0 0 1 4-4h14'/%3E%3Cpolyline points='7 23 3 19 7 15'/%3E%3Cpath d='M21 13v2a4 4 0 0 1-4 4H3'/%3E%3C/svg%3E");
+}
+
+.carte:nth-child(3) {
+  color: var(--plan-navy);
+}
+.carte:nth-child(3)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+}
+
+.carte h3 {
+  margin-top: 0;
+  color: var(--plan-navy);
+}
+
+
+/* ---------- 6. PAGE EVENTS ---------- */
+
+/* Même identité que les cartes de l'accueil, en version liste :
+   fiche en papier découpé, inclinée, mais cette fois avec un
+   numéro de séance "tamponné" en haut à droite. Le numéro n'est
+   écrit nulle part dans le HTML : c'est un compteur CSS
+   (counter-reset / counter-increment / counter()) qui le calcule
+   à partir de la position de chaque <li>. Si on ajoute une
+   septième séance dans le HTML, le tampon "N°07" apparaît tout
+   seul, sans y toucher. */
+.liste-seances {
+  counter-reset: seance;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 26px;
+}
+
+.liste-seances li {
+  counter-increment: seance;
+  position: relative;
+  background-color: var(--papier);
+  clip-path: polygon(
+    0% 6%, 8% 1%, 16% 5%, 24% 1%, 32% 5%, 40% 1%, 48% 5%,
+    56% 1%, 64% 5%, 72% 1%, 80% 5%, 88% 1%, 96% 5%, 100% 2%,
+    100% 100%, 0% 100%
+  );
+  padding: 22px 70px 18px 24px;
+  box-shadow: 0 8px 14px -8px var(--papier-ombre);
+}
+
+.liste-seances li:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+.liste-seances li:nth-child(even) {
+  transform: rotate(0.5deg);
+}
+
+.liste-seances li::after {
+  content: "N°" counter(seance, decimal-leading-zero);
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-8deg);
+  border: 1px dashed var(--plan-bleu);
+  border-radius: 50%;
+  font-family: var(--police-code);
+  font-size: 0.7rem;
+  color: var(--plan-bleu);
+}
+
+.liste-seances h2 {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+}
+
+.liste-seances time {
+  font-family: var(--police-code);
+  color: var(--plan-bleu);
+}
+
+
+/* ---------- 7. PAGE MEMBRES ---------- */
+
+.photo-membres {
+  margin: 24px 0;
+}
+
+.photo-membres img {
+  border-radius: 10px;
+  border: 3px solid var(--plan-navy);
+}
+
+.photo-membres figcaption {
+  margin-top: 8px;
+  font-family: var(--police-code);
+  font-size: 0.9rem;
+  color: var(--plan-navy);
+}
+
+
+/* ---------- 8. PAGE INSCRIPTION ---------- */
+
+form {
+  max-width: 480px;
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.champ {
+  display: grid;
+  gap: 6px;
+}
+
+.champ label {
+  font-weight: 600;
+  color: var(--plan-navy);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid var(--beton-sombre);
+  border-radius: 6px;
+  background-color: var(--blanc);
+  color: var(--encre);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--plan-bleu);
+  outline-offset: 1px;
+}
+
+button[type="submit"] {
+  font-family: var(--police-code);
+  font-weight: 500;
+  background-color: var(--rebar-vert);
+  color: var(--plan-navy);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--rebar-vert-sombre);
+  color: var(--blanc);
+}
+
+
+/* ---------- 9. PIED DE PAGE ---------- */
+
+footer {
+  border-top: 1px solid rgba(2, 15, 29, 0.2);
+  padding: 24px;
+}
+
+footer nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+footer a {
+  font-family: var(--police-code);
+  color: var(--plan-navy);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--rebar-vert-sombre);
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--plan-navy);
+}
+
+
+/* ---------- 10. ACCESSIBILITÉ ET CONFORT ---------- */
+
+a:focus-visible,
+.theme-buton:focus-visible,
+button:focus-visible {
+  outline: 2px dashed var(--rebar-vert);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* ---------- 11. RESPONSIVE ---------- */
+
+@media (max-width: 640px) {
+  header {
+    flex-wrap: wrap;
+    row-gap: 12px;
+    border-bottom-right-radius: 18%;
+  }
+  /* Le problème visible sur mobile : avec header en simple
+     flex-wrap, "A propos" n'avait plus de place sur la première
+     ligne et retombait tout seul, collé à la courbe. La correction
+     ne touche pas le HTML : on rejoue l'ordre visuel avec `order`.
+     Logo et bouton de thème restent sur la première ligne
+     (justify-content: space-between du header s'applique toujours
+     à eux), et la nav est forcée sur sa propre ligne en dessous
+     grâce à flex-basis: 100%, centrée pour rester lisible. */
+  header > a {
+    order: 1;
+  }
+  .theme-buton {
+    order: 2;
+  }
+  header ul {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 8px;
+  }
+  header a {
+    font-size: 14px;
+  }
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  form {
+    max-width: none;
+  }
+}

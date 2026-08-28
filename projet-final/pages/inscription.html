@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  inscription.html — formulaire pour rejoindre la communauté
+
+  Point pédagogique principal de cette page : le formulaire.
+  Chaque <input> est relié à son <label> par id/for : c'est ce qui
+  permet à quelqu'un de cliquer sur le texte "Nom complet" pour
+  activer le champ, et à un lecteur d'écran d'annoncer le bon nom
+  de champ. Sans ce lien, le formulaire a l'air normal à l'œil mais
+  reste mal utilisable.
+
+  Ce formulaire n'envoie rien pour l'instant (pas de backend) :
+  l'attribut action est vide et le bouton est de type "submit" pour
+  montrer le comportement standard, à brancher plus tard.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejoindre — C2P</title>
+  <meta name="description" content="Rejoindre la Communauté Premiers Pas.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header>
+    <a href="/index.html">
+      <img src="/images/logo-c2p.png" alt="Logo de la communauté C2P" width="80px">
+    </a>
+    <ul>
+      <li><a href="/pages/inscription.html">Rejoindre</a></li>
+      <li><a href="/pages/events.html">Events</a></li>
+      <li><a href="/pages/membres.html">Membres</a></li>
+      <li><a href="/pages/about.html">A propos</a></li>
+    </ul>
+    <button type="button" class="theme-buton" aria-label="Changer de thème">◌</button>
+  </header>
+
+  <main>
+    <h1>Rejoindre la communauté</h1>
+    <p>Quelques informations pour t'ajouter au prochain groupe.</p>
+
+    <form action="#" method="post">
+
+      <!-- Chaque paire label/input suit le même schéma :
+           for="id_du_champ" sur le label, id="id_du_champ" sur
+           l'input. Les deux id doivent être identiques. -->
+      <div class="champ">
+        <label for="nom">Nom complet</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+
+      <div class="champ">
+        <label for="email">Adresse e-mail</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="champ">
+        <label for="telephone">Numéro de téléphone</label>
+        <input type="tel" id="telephone" name="telephone">
+      </div>
+
+      <div class="champ">
+        <!-- <select> : utile quand la réponse doit venir d'une liste
+             fermée, pour éviter les réponses libres mal orthographiées. -->
+        <label for="niveau">Niveau actuel</label>
+        <select id="niveau" name="niveau">
+          <option value="debutant">Débutant complet</option>
+          <option value="notions">Quelques notions</option>
+          <option value="developpeur">Développeur, je viens solidifier mes bases</option>
+        </select>
+      </div>
+
+      <div class="champ">
+        <label for="motivation">Pourquoi tu veux rejoindre C2P</label>
+        <textarea id="motivation" name="motivation" rows="4"></textarea>
+      </div>
+
+      <button type="submit">Envoyer ma demande</button>
+    </form>
+  </main>
+
+  <footer>
+    <nav aria-label="Liens du pied de page">
+      <ul>
+        <li><a href="/index.html">Accueil</a></li>
+        <li><a href="/pages/about.html">A propos</a></li>
+        <li><a href="/pages/events.html">Events</a></li>
+        <li><a href="/pages/membres.html">Membres</a></li>
+        <li><a href="/pages/inscription.html">Rejoindre</a></li>
+      </ul>
+    </nav>
+    <p>Communauté Premiers Pas (C2P) — Lomé, Togo</p>
+  </footer>
+
+</body>
+</html>

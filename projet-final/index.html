@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+  index.html — page d'accueil de la Communauté Premiers Pas (C2P)
+
+  Ce fichier sert de support de cours en plus d'être la vraie page
+  du site. Chaque bloc important est commenté pour qu'on puisse
+  s'en servir directement pendant la formation.
+
+  Le CSS n'est pas traité ici : on garde le HTML propre et on lui
+  donne du sens avant de l'habiller ce soir. C'est la même logique
+  que sur un chantier : on ne peint pas des murs qui ne sont pas
+  encore montés.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <!-- Sans cette balise, le site s'affiche en mini format sur mobile,
+       comme une page de bureau réduite. Elle dit au navigateur du
+       téléphone : affiche la page à sa vraie taille. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communauté Premiers Pas — C2P</title>
+  <meta name="description" content="C2P, la Communauté Premiers Pas : apprendre le développement web à Lomé, du HTML jusqu'au déploiement.">
+
+  <!--
+    On utilise un chemin absolu "/style.css" plutôt que "style.css".
+    Différence importante à expliquer ce soir :
+    - un chemin relatif ("style.css") se lit depuis l'endroit où se
+      trouve la page qui l'appelle. Pour une page dans /pages/, il
+      faudrait écrire "../style.css".
+    - un chemin absolu ("/style.css") part toujours de la racine du
+      site, donc il fonctionne pareil sur toutes les pages, peu
+      importe leur profondeur.
+    C'est pour ça que le lien vers la feuille de style est resté
+    identique sur index.html et sur toutes les pages de /pages/.
+  -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!--
+    HEADER : ce qui se répète sur chaque page (logo + navigation).
+    On le retrouve à l'identique sur about.html, events.html,
+    membres.html et inscription.html.
+  -->
+  <header>
+    <a href="/index.html">
+      <img src="/images/logo-c2p.png" alt="Logo de la communauté C2P" width="80px">
+    </a>
+
+    <ul>
+      <li><a href="/pages/inscription.html">Rejoindre</a></li>
+      <li><a href="/pages/events.html">Events</a></li>
+      <li><a href="/pages/membres.html">Membres</a></li>
+      <!-- Bug corrigé : il manquait la balise fermante </a> ici,
+           ce qui cassait le lien "A propos" et pouvait perturber
+           l'affichage des éléments qui suivent. -->
+      <li><a href="/pages/about.html">A propos</a></li>
+    </ul>
+
+    <button type="button" class="theme-buton" aria-label="Changer de thème">◌</button>
+  </header>
+
+  <!--
+    MAIN : le contenu propre à cette page. Une page ne doit avoir
+    qu'un seul <main>, et un seul <h1> à l'intérieur.
+  -->
+  <main>
+
+    <!-- Section d'ouverture : ce qu'on veut qu'un visiteur comprenne
+         en 5 secondes, avant même de faire défiler la page. -->
+    <section class="hero">
+      <div class="hero-texte">
+        <h1>Apprendre à coder, ensemble, à Lomé</h1>
+        <p>
+          C2P, la Communauté Premiers Pas, accompagne des débutants et
+          des développeurs qui veulent solidifier leurs bases, du HTML
+          jusqu'au déploiement d'un vrai site.
+        </p>
+        <a href="/pages/inscription.html" class="bouton-principal">Rejoindre la communauté</a>
+      </div>
+      <img src="/images/imageCommu.png" alt="Séance de la communauté C2P en cours" class="hero-image">
+    </section>
+
+    <!--
+      Section "pourquoi C2P" : trois idées qui expliquent la
+      pédagogie, présentées comme trois <article> distincts.
+      On utilise <article> plutôt que <div> parce que chacun de ces
+      blocs a du sens tout seul, même sorti de la page.
+    -->
+    <section class="approche">
+      <h2>Comment on apprend chez C2P</h2>
+
+      <article class="carte">
+        <h3>Du béton au code</h3>
+        <p>
+          On enseigne la structure avant le style : le HTML, ce sont
+          les fondations et les briques, le CSS c'est la peinture.
+          On ne peint jamais un mur qui n'est pas encore monté.
+        </p>
+      </article>
+
+      <article class="carte">
+        <h3>Le rythme des Vendredis Code</h3>
+        <p>
+          Une séance le vendredi pour apprendre une notion, un atelier
+          le dimanche pour la pratiquer en équipe, sur six séances.
+        </p>
+      </article>
+
+      <article class="carte">
+        <h3>Ancré dans notre quotidien</h3>
+        <p>
+          Les exemples viennent d'ici : le maquis, le marché
+          d'Assigamé, nos plats. Le code s'apprend mieux quand il
+          parle de ce qu'on connaît déjà.
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+  <!--
+    FOOTER : présent sur chaque page. On y met les informations qui
+    ne changent jamais d'une page à l'autre : liens utiles et contact.
+  -->
+  <footer>
+    <nav aria-label="Liens du pied de page">
+      <ul>
+        <li><a href="/index.html">Accueil</a></li>
+        <li><a href="/pages/about.html">A propos</a></li>
+        <li><a href="/pages/events.html">Events</a></li>
+        <li><a href="/pages/membres.html">Membres</a></li>
+        <li><a href="/pages/inscription.html">Rejoindre</a></li>
+      </ul>
+    </nav>
+    <p>Communauté Premiers Pas (C2P) — Lomé, Togo</p>
+  </footer>
+
+</body>
+</html>
