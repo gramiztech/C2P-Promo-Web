@@ -107,6 +107,30 @@ header a {
 ```
 Ici, ça ne cible que les liens `<a>` qui sont dans un `<header>`, pas tous les liens de la page.
 
+**Sélecteur d'attribut** - un élément qui possède un attribut précis :
+```css
+a[href*="inscription"] {
+  color: green;
+}
+```
+Ça cible tous les liens dont l'attribut `href` contient le mot "inscription", peu importe le texte affiché. C'est ce qui permet de cibler un lien précis dans le menu du site de C2P sans avoir besoin d'ajouter une classe dessus.
+
+**Les combinateurs**, pour préciser une relation entre deux éléments :
+
+| Écriture | Nom | Ce qu'il cible |
+|---|---|---|
+| `A B` | descendant | tout `B` à l'intérieur de `A`, peu importe la profondeur |
+| `A > B` | enfant direct | un `B` juste à l'intérieur de `A`, pas plus loin |
+| `A + B` | frère adjacent | le `B` juste après `A`, même parent |
+| `A ~ B` | frères suivants | tous les `B` qui suivent `A`, même parent |
+
+```css
+.carte + .carte {
+  margin-top: 20px;
+}
+```
+Cette règle ajoute un espace uniquement entre deux cartes qui se suivent - jamais avant la toute première.
+
 ---
 
 ## 4. La cascade : pourquoi "cascading" style sheets
@@ -148,20 +172,7 @@ Le piège classique pour un débutant : utiliser des `id` partout "pour être s�
 
 En CSS, **chaque élément HTML est une boîte rectangulaire**, même s'il ne le montre pas visuellement. Cette boîte a quatre couches, de l'intérieur vers l'extérieur :
 
-```
-┌─────────────────────────────┐
-│           margin             │  espace extérieur, hors de la boîte
-│  ┌─────────────────────────┐ │
-│  │         border           │ │  le contour visible
-│  │  ┌─────────────────────┐ │ │
-│  │  │       padding        │ │ │  espace intérieur, avant le contenu
-│  │  │  ┌─────────────────┐ │ │ │
-│  │  │  │     content      │ │ │ │  le texte ou l'image
-│  │  │  └─────────────────┘ │ │ │
-│  │  └─────────────────────┘ │ │
-│  └─────────────────────────┘ │
-└─────────────────────────────┘
-```
+![Le modèle de boîte : content au centre, entouré du padding, puis de la bordure, puis du margin](box-model.svg)
 
 ```css
 .carte {
@@ -274,6 +285,31 @@ Un **pseudo-élément** crée quelque chose qui n'existe pas dans le HTML :
 ```
 `::before` et `::after` ajoutent un élément juste avant ou juste après le contenu réel, uniquement visuel - rien de tout ça n'apparaît si on lit le code source HTML. C'est la technique derrière les icônes et la ligne de contrôle du site de C2P.
 
+Quelques pseudo-classes utiles à connaître, au-delà de `:hover` et `:focus-visible` :
+
+| Pseudo-classe | Ce qu'elle cible |
+|---|---|
+| `:first-child` | un élément qui est le premier de sa fratrie |
+| `:last-child` | un élément qui est le dernier de sa fratrie |
+| `:nth-child(2)` | le deuxième élément d'une fratrie (marche aussi avec `odd`, `even`, ou une formule) |
+| `:not(.carte)` | tout élément qui NE correspond PAS à ce sélecteur |
+| `:disabled` | un champ de formulaire désactivé |
+
+```css
+.carte:nth-child(2) {
+  transform: translateY(16px);
+}
+```
+
+**Les commentaires**, pour laisser des notes dans le code sans qu'elles s'affichent :
+```css
+/* ceci est un commentaire, le navigateur l'ignore complètement */
+.carte {
+  color: black; /* on peut aussi commenter en bout de ligne */
+}
+```
+Contrairement au HTML (`<!-- -->`), le CSS utilise `/* */`. Un fichier CSS bien commenté, découpé en sections, est beaucoup plus facile à reprendre trois mois plus tard - le tien en est un exemple.
+
 ---
 
 ## 12. Le responsive, en une idée
@@ -288,9 +324,176 @@ Une **media query** applique des règles CSS seulement si une condition sur l'é
 ```
 Ici, ces règles ne s'activent que si la largeur de la fenêtre est de 640 pixels ou moins - typiquement, un téléphone. En dehors de cette condition, elles sont simplement ignorées. C'est ce qui permet à une même page de s'afficher correctement sur un ordinateur et sur un téléphone, sans créer deux sites différents.
 
+## 13. Les propriétés raccourcies
+
+Certaines propriétés regroupent plusieurs réglages en une seule ligne. `margin` en est une :
+```css
+/* Ces deux écritures font exactement la même chose */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 10px;
+margin-left: 20px;
+
+margin: 10px 20px;
+```
+Avec deux valeurs, la première s'applique en haut/bas, la seconde à gauche/droite. Avec quatre valeurs, l'ordre suit le sens d'une horloge : haut, droite, bas, gauche. `padding`, `border`, `background` et `font` fonctionnent sur le même principe : plusieurs propriétés détaillées, condensées en une seule.
+
+## 14. Les variables CSS (propriétés personnalisées)
+
+On peut donner un nom à une valeur, et la réutiliser partout dans le fichier :
+```css
+:root {
+  --plan-bleu: #1683D0;
+}
+
+a {
+  color: var(--plan-bleu);
+}
+```
+`:root` désigne le sommet du document - l'endroit habituel où déclarer ses variables pour qu'elles soient valables sur toute la page. Le double tiret (`--plan-bleu`) fait partie du nom, ce n'est pas une faute de frappe. On récupère ensuite la valeur avec `var(--plan-bleu)`.
+
+L'intérêt : si la couleur de la marque change un jour, on la modifie à un seul endroit, et tout le site suit. C'est exactement comme ça que le fichier `style.css` de C2P est construit - toutes les couleurs sont des variables déclarées tout en haut.
+
 ---
 
-## 13. Bonnes pratiques à prendre dès le début
+## 15. `transform` : déplacer, tourner, sans casser la mise en page
+
+`transform` change l'apparence visuelle d'un élément sans toucher à la place qu'il occupe dans la page - les éléments autour ne bougent pas, même si celui-ci pivote ou grandit.
+```css
+.carte {
+  transform: rotate(-1.4deg);
+}
+.carte:hover {
+  transform: translateY(-4px);
+}
+```
+- `rotate(-1.4deg)` : incline l'élément.
+- `translateY(-4px)` : le déplace verticalement, sans changer sa position dans le flux normal (contrairement à `margin-top`, qui pousserait aussi les voisins).
+- Il existe aussi `translateX()`, `scale()` (agrandir/rétrécir), et on peut cumuler plusieurs transformations dans une seule déclaration : `transform: rotate(2deg) translateY(10px)`.
+
+**`transition`** anime le passage d'une valeur à une autre, au lieu d'un changement brutal :
+```css
+.carte {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+```
+On lit : "quand `transform` ou `box-shadow` changent, prends 0.2 seconde pour y arriver, avec une accélération douce (`ease`)." Sans cette ligne, le survol de la fiche du site de C2P changerait de position d'un coup sec, sans mouvement fluide.
+
+## 16. `clip-path` : découper une forme
+
+Par défaut, tout élément HTML est un rectangle. `clip-path` permet de le découper selon une forme qu'on décrit soi-même :
+```css
+.carte {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+```
+Cette ligne, à elle seule, redessine un simple rectangle - quatre coins, dans l'ordre. En donnant plus de points, avec des hauteurs légèrement différentes, on obtient un bord irrégulier, comme une feuille déchirée : c'est exactement la technique derrière les fiches "papier" du site de C2P. Chaque paire de nombres est un point `x% y%` du contour à suivre, dans l'ordre où on les écrit.
+
+## 17. Les dégradés
+
+Un dégradé est une valeur qu'on donne à `background-image`, pas une propriété à part :
+```css
+.hero {
+  background-image: linear-gradient(180deg, #1683D0, #020F1D);
+}
+```
+`linear-gradient` va d'une couleur à l'autre en ligne droite - ici de haut en bas (`180deg`). `radial-gradient` part du centre et s'étend en cercle :
+```css
+.pastille {
+  background-image: radial-gradient(circle, #ffffff, #0bd42d 65%);
+}
+```
+On peut empiler plusieurs dégradés (séparés par des virgules) sur un même élément - c'est ce qui donne la texture du fond de page sur le site de C2P : plusieurs dégradés discrets, superposés.
+
+## 18. Les compteurs CSS
+
+Un compteur numérote automatiquement une liste d'éléments, sans écrire les numéros dans le HTML :
+```css
+.liste-seances {
+  counter-reset: seance;
+}
+.liste-seances li {
+  counter-increment: seance;
+}
+.liste-seances li::after {
+  content: "N°" counter(seance);
+}
+```
+- `counter-reset: seance` : crée un compteur nommé "seance", remis à zéro à cet endroit.
+- `counter-increment: seance` : ajoute 1 à chaque `<li>` rencontré.
+- `counter(seance)` : affiche la valeur actuelle, utilisable uniquement dans une propriété `content`.
+
+Si on ajoute un septième `<li>` dans le HTML plus tard, il reçoit automatiquement le numéro 7 - rien à recalculer à la main.
+
+## 19. `clamp()` et `repeat(auto-fit, minmax())`, expliqués pour de vrai
+
+Ces deux techniques étaient citées en commentaire dans le style.css de C2P, sans être détaillées jusqu'ici - les voici.
+
+**`clamp(minimum, valeur préférée, maximum)`** donne une valeur qui suit l'écran, sans jamais sortir d'une fourchette :
+```css
+h1 {
+  font-size: clamp(1.8rem, 4vw + 1rem, 3rem);
+}
+```
+La taille réelle du titre est `4vw + 1rem`, mais elle ne descend jamais sous `1.8rem` ni ne dépasse `3rem`. Une seule ligne remplace ce qu'il aurait fallu écrire avec plusieurs `@media`.
+
+**`repeat(auto-fit, minmax(240px, 1fr))`**, utilisée avec `display: grid`, crée autant de colonnes de 240px minimum que la largeur le permet, et les étire pour combler l'espace :
+```css
+.approche {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+```
+Sur un grand écran, ça donne trois colonnes. Sur un téléphone, une seule - sans écrire une seule media query pour ça. `auto-fit` compte combien de colonnes de 240px tiennent dans la largeur disponible, et `1fr` les étire ensuite pour remplir l'espace qui reste.
+
+## 20. `object-fit`, pour les images qui ne rentrent jamais bien
+
+Quand on force une image dans une taille précise, elle s'étire souvent de travers. `object-fit` règle ça :
+```css
+img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+```
+`cover` remplit tout l'espace donné, recadre ce qui dépasse, sans jamais déformer l'image - le même principe que le recadrage automatique d'une photo de profil. `contain` fait l'inverse : toute l'image reste visible, quitte à laisser un espace vide autour.
+
+---
+
+
+
+| Mot | Ce que ça veut dire |
+|---|---|
+| **règle** | un sélecteur + son bloc de déclarations |
+| **sélecteur** | ce qui désigne à quel(s) élément(s) une règle s'applique |
+| **déclaration** | une paire propriété/valeur, terminée par `;` |
+| **propriété** | ce qu'on modifie (`color`, `padding`...) |
+| **valeur** | ce qu'on donne à la propriété (`blue`, `20px`...) |
+| **classe** | un sélecteur réutilisable, avec un point (`.carte`) |
+| **id** | un sélecteur unique par page, avec un dièse (`#header-principal`) |
+| **cascade** | l'ensemble des règles qui décident quelle déclaration l'emporte en cas de conflit |
+| **spécificité** | le "poids" d'un sélecteur, utilisé par la cascade |
+| **héritage** | la transmission automatique de certaines valeurs des parents vers les enfants |
+| **combinateur** | un symbole (` `, `>`, `+`, `~`) qui relie deux sélecteurs |
+| **pseudo-classe** | cible un état (`:hover`) - commence par un deux-points |
+| **pseudo-élément** | crée un élément visuel qui n'existe pas dans le HTML (`::before`) - commence par deux deux-points |
+| **box model** | les quatre couches de toute boîte : content, padding, border, margin |
+| **box-sizing** | décide si `padding`/`border` sont comptés dans le `width` ou ajoutés par-dessus |
+| **media query** | une règle CSS activée seulement sous certaines conditions d'écran |
+| **propriété raccourcie** | une propriété qui en regroupe plusieurs (`margin` pour les quatre côtés) |
+| **variable CSS** (propriété personnalisée) | une valeur nommée, réutilisable avec `var()` |
+| **at-rule** | une règle qui commence par `@` (`@media`, `@import`...) |
+| **transform** | déplace, tourne ou redimensionne un élément sans affecter les autres |
+| **transition** | anime un changement de valeur au lieu de le rendre brutal |
+| **clip-path** | découpe un élément selon une forme qu'on décrit par des points |
+| **dégradé** (`gradient`) | une transition progressive entre plusieurs couleurs, utilisée comme fond |
+| **compteur CSS** | un numéro calculé automatiquement (`counter-reset`, `counter-increment`, `counter()`) |
+| **`clamp()`** | une valeur qui suit l'écran, entre un minimum et un maximum fixés |
+| **`object-fit`** | décide comment une image se recadre dans un espace de taille fixe |
+
+---
+
+## 21. Bonnes pratiques à prendre dès le début
 
 - **Nommer les classes par leur rôle, pas par leur apparence.** `.carte` plutôt que `.boite-blanche` - si un jour la carte change de couleur, le nom reste juste.
 - **Organiser le fichier par sections**, avec des commentaires (`/* ... */`) qui annoncent chaque partie.
@@ -299,8 +502,12 @@ Ici, ces règles ne s'activent que si la largeur de la fenêtre est de 640 pixel
 
 ---
 
-## 14. Pour aller plus loin
+## 22. Pour aller plus loin
 
-- MDN (Mozilla) - la référence la plus complète et la plus fiable sur CSS, en français : developer.mozilla.org
-- web.dev/learn/css - un parcours structuré, par Google, gratuit
-- CSS Zen Garden (csszengarden.com) - pour voir la même page HTML habillée de centaines de façons différentes
+- MDN, module "Bases de la présentation CSS" - developer.mozilla.org/fr/docs/Learn_web_development/Core/Styling_basics - le parcours officiel de Mozilla, en français, pensé pour les débutants complets.
+- Grafikart (grafikart.fr) - tutoriels vidéo gratuits, en français, du niveau débutant à avancé.
+- CSS Zen Garden (csszengarden.com) - pour voir la même page HTML habillée de centaines de façons différentes.
+
+Ce document couvre bien plus que ce qu'on peut voir en direct en deux heures. Les sections 13 et 14 (propriétés raccourcies, variables CSS), le glossaire complet, et cette liste de liens sont volontairement plus riches que la séance elle-même - ils restent disponibles comme référence à consulter après, pas à dérouler en entier ce soir.
+
+Les sections 15 à 20 (`transform`, `transition`, `clip-path`, dégradés, compteurs, `clamp()`, `object-fit`) sont différentes : ce ne sont pas des notions à lire en survol, ce sont les techniques utilisées dans l'atelier pratique de ce soir, sur le header, les cartes, les listes et le footer. Voir `creer-composants-css.md` pour le déroulé, ligne par ligne.
