@@ -1,0 +1,206 @@
+/*
+  Les briques réutilisables sur toutes les pages
+  Une seule version de chaque composant 
+
+/*  Icônes  */
+/*Toutes les icones d'interface viennent du sprite SVG partagé
+  et utilisent stroke="currentColor" : qui permet aux icone de prendre
+  automatiquement la couleur du texte parent, meme lors de changement de thème. */
+.icone {
+  width: var(--taille-icone);
+  height: var(--taille-icone);
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+/*  En-tête*/
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--espace-5) var(--espace-6);
+  max-width: var(--largeur-max-contenu);
+  margin: 0 auto;
+}
+
+.site-header__logo img {
+  height: 48px;
+  display: block;
+}
+
+.pill-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-6);
+  background-color: var(--couleur-pill-fond);
+  padding: var(--espace-3) var(--espace-6);
+  border-radius: var(--rayon-pill);
+}
+
+.pill-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+  text-decoration: none;
+  color: var(--couleur-texte);
+  font-size: var(--taille-texte-base);
+  font-weight: 500;
+  transition: color var(--transition-rapide);
+}
+
+.pill-nav__item:hover {
+  color: var(--couleur-accent);
+}
+
+.theme-toggle {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: var(--rayon-md);
+  background-color: var(--couleur-pill-fond);
+  cursor: pointer;
+  transition: transform var(--transition-douce);
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* Menu hamburger (sur mobile sans Js) 
+  Technique de la case à cocher cachée : la case ne s'affiche jamais
+  seule son étiquette (stylée en bouton) est visible. Cocher ou décocher
+  la case change l'état ":checked" qu'on récupère en CSS avec le
+  sélecteur "~" pour afficher ou cacher la nav juste après elle dans le HTML
+  Ca c'etait une idé de genie 
+*/
+.menu-toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-toggle-bouton {
+  display: none; /* caché par défaut sur pc*/
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rayon-md);
+  background-color: var(--couleur-pill-fond);
+  cursor: pointer;
+}
+
+/*  Pied de page  */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--espace-6);
+  max-width: var(--largeur-max-contenu);
+  margin: 0 auto;
+  padding: var(--espace-7) var(--espace-6) var(--espace-5);
+  border-top: 1px solid var(--couleur-bordure);
+}
+
+.site-footer__colonne {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-2);
+}
+
+.site-footer__colonne h4 {
+  font-size: var(--taille-texte-sm);
+  color: var(--couleur-texte-attenue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--espace-1);
+}
+
+.site-footer__colonne a {
+  color: var(--couleur-texte);
+  text-decoration: none;
+  font-size: var(--taille-texte-sm);
+}
+
+.site-footer__colonne a:hover {
+  color: var(--couleur-accent);
+}
+
+.site-footer__copyright {
+  width: 100%;
+  text-align: center;
+  margin-top: var(--espace-5);
+  font-size: var(--taille-texte-xs);
+  color: var(--couleur-texte-attenue);
+}
+
+/*Boutons et liens 
+  Une seule version
+*/
+
+.bouton-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espace-2);
+  background-color: var(--couleur-cta-fond);
+  color: var(--couleur-cta-texte);
+  padding: var(--espace-3) var(--espace-6);
+  border-radius: var(--rayon-pill);
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--transition-rapide);
+}
+
+.bouton-cta:hover {
+  opacity: 0.85;
+}
+
+.lien-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espace-1);
+  color: var(--couleur-accent);
+  font-weight: 600;
+  font-size: var(--taille-texte-sm);
+  text-decoration: none;
+  width: fit-content;
+  transition: gap var(--transition-rapide);
+}
+
+.lien-action:hover {
+  gap: var(--espace-2);
+}
+
+.lien-action .icone {
+  width: var(--taille-icone-sm);
+  height: var(--taille-icone-sm);
+}
+
+/*  Badges  */
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: var(--taille-texte-xs);
+  font-weight: 600;
+  padding: var(--espace-1) var(--espace-3);
+  border-radius: var(--rayon-pill);
+}
+
+.badge--actif {
+  background-color: var(--couleur-badge-actif-fond);
+  color: var(--couleur-badge-actif-texte);
+}
+
+.badge--passe {
+  background-color: var(--couleur-badge-passe-fond);
+  color: var(--couleur-badge-passe-texte);
+}
+
+/*La responsivité de ces composants (header, footer, boutons)
+  est dans responsive.css, à lier sur chaque page.
+*/

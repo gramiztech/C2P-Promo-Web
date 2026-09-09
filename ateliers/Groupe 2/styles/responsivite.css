@@ -1,0 +1,84 @@
+/* 
+  Ce fichier concerne QUE le header, le footer et les
+  boutons ou liens communs à toutes les pages. La responsivité
+  propre à une page (hero, cartes, formulaires...) reste dans
+  le nom_de_la_page.css de cette page
+
+  A integrer après variables.css et composants.css, sur chaque page.
+*/
+
+@media (max-width: 767px) {
+
+  /*En-tête  */
+  /*Le header passe sur deux lignes : logo + hamburger + soleil
+    en haut, puis la nav juste en bas si ouvert. 
+  */
+  .site-header {
+    flex-wrap: wrap;
+    gap: var(--espace-3);
+  }
+
+  .menu-toggle-bouton {
+    display: flex;
+    order: 1;
+  }
+
+  .theme-toggle {
+    order: 2;
+  }
+
+  /* La pilule devient une liste verticale ,
+    invisible tant que la case cachée n'est pas cochée
+    (voir le menu hamburger sans JS dans composants.css). 
+  */
+  .pill-nav {
+    display: none;
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espace-3);
+    margin-top: var(--espace-2);
+  }
+
+  .menu-toggle-checkbox:checked~.pill-nav {
+    display: flex;
+  }
+
+  /*Pied de page  */
+  /* Chaque colonne prend toute la largeur et s'empile,
+    au lieu de se positioner côte à côte. */
+  .site-footer__colonne {
+    flex: 1 1 100%;
+  }
+
+  /*Boutons  */
+  /* Le bouton d'action principal est plus important dont une cible tactile
+    pleine largeur, plus facile à toucher 
+  */
+  .bouton-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 
+  Pour une adaptabilité encore plus cool : au lieu
+  d'ajouter un d'autre codes css  pour un futur nombre de
+  colonnes en plus, une grille en "auto-fit" calcule elle-même combien
+  d'éléments tiennent par ligne, à n'importe quelle largeur
+  d'écran, sans qu'on ait à écrire une seule media query.
+
+  Exemple :
+  .grille-intelligente {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espace-6);
+  }
+
+  "auto-fit" : autant de colonnes que possible tiennent sur la
+  largeur disponible. "minmax(280px, 1fr)" : chaque colonne ne
+  descend jamais sous 280px, et se partage équitablement l'espace
+  restant au-dessus. Du coup: 4 colonnes sur un grand écran,
+  2 sur une tablette, 1 sur un mobile - automatiquemen. A ctiver quand une grille doit être utilisée sur plusieurs pages du site.
+*/

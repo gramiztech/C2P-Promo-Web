@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="clair">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPremiers Pas - Titre_de_la_page</title>
+  <link rel="stylesheet" href="../styles/variables.css" />
+  <link rel="stylesheet" href="../styles/composants.css" />
+  <link rel="stylesheet" href="../styles/responsivite.css" />
+
+  <!-- styles propres à cette page uniquement -->
+  <link rel="stylesheet" href="style_de_la_page.css" />
+</head>
+
+<body>
+
+  <!-- Sprite d'icônes :En cas de besoin d'icone sur une page, if faut juste recopier.
+    Si tu veux ajouter une icône, il faut just creer un nouveau <symbol> ici
+    je vais pas voir un <svg>  ailleurs dans le code.
+  -->
+  <svg style="display: none;">
+
+    <symbol id="icone-communaute" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+
+    <symbol id="icone-cadeau" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <rect x="3" y="8" width="18" height="4" />
+      <path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+      <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8" />
+      <path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8" />
+    </symbol>
+
+    <symbol id="icone-personne" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="7" r="4" />
+      <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
+    </symbol>
+
+    <symbol id="icone-soleil" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2
+        12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </symbol>
+
+    <symbol id="icone-fleche" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </symbol>
+
+    <symbol id="icone-menu" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <path d="M3 6h18M3 12h18M3 18h18" />
+    </symbol>
+
+    <symbol id="icone-calendrier" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+    </symbol>
+
+  </svg>
+
+  <header class="site-header">
+    <a href="../index.html" class="site-header__logo">
+      <img src="../images/logoC2P.png" alt="Logo Premiers Pas" />
+    </a>
+
+    <!-- Menu hamburger sans Js: la case est cachée et c'est uniquement
+      son étiquette (genre le bouton) peut être cliqué ou touché.
+      On l'affiche qu'en dessous de 768px, voir composants.css. 
+    -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox" />
+    <label for="menu-toggle" class="menu-toggle-bouton" aria-label="Ouvrir le menu">
+      <svg class="icone">
+        <use href="#icone-menu"></use>
+      </svg>
+    </label>
+
+    <nav class="pill-nav" aria-label="Navigation principale">
+      <a href="/pages/membres.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-communaute"></use>
+        </svg>
+        Communauté
+      </a>
+      <a href="/pages/events.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-cadeau"></use>
+        </svg>
+        Événements
+      </a>
+      <a href="/pages/inscription.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-personne"></use>
+        </svg>
+        Rejoindre
+      </a>
+    </nav>
+
+    <button class="theme-toggle" aria-label="Basculer le thème clair/sombre">
+      <svg class="icone">
+        <use href="#icone-soleil"></use>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!--Contenu propre à cette page-->
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__colonne">
+      <h4>Navigation</h4>
+      <a href="../index.html">Accueil</a>
+      <a href="./membres.html">Communauté</a>
+      <a href="./events.html">Événements</a>
+      <a href="./inscription.html">Rejoindre</a>
+      <a href="./about.html">À propos</a>
+    </div>
+
+    <div class="site-footer__colonne">
+      <h4>Réseaux</h4>
+      <a href="https://www.linkedin.com/company/c2p-community/">
+        LinkedIn
+      </a>
+      <a href="https://github.com/Paskod121/C2P-Python-Essentiel.git">
+        GitHub
+      </a>
+    </div>
+
+    <div class="site-footer__colonne">
+      <h4>Partenaires</h4>
+      <a href="https://tcc.hyver.org/">Tech Community Clubs</a>
+    </div>
+
+    <p class="site-footer__copyright">© 2026 C2P - Lomé, Togo</p>
+  </footer>
+
+</body>
+
+</html>

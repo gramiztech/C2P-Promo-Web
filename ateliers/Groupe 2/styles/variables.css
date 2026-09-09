@@ -1,0 +1,74 @@
+/*
+  Toute couleur, taille ou espacement du site doit passer
+  par une variable d'ici. Aucune valeur en dur ailleurs.
+  Si tu a besoin d'une nouvelle variable tu peut en declarer
+*/
+
+:root {
+  /*  Couleurs  */
+  --couleur-fond: #ffffff;
+  --couleur-fond-secondaire: #f3f4f6;
+  --couleur-texte: #1f2937;
+  --couleur-texte-attenue: #6b7280;
+  --couleur-accent: #2563eb;
+  --couleur-pill-fond: #dbeafe;
+  --couleur-cta-fond: #111111;
+  --couleur-cta-texte: #7dd3fc;
+  --couleur-bordure: #e5e7eb;
+
+  --couleur-badge-actif-fond: #dcfce7;
+  --couleur-badge-actif-texte: #166534;
+  --couleur-badge-passe-fond: #e5e7eb;
+  --couleur-badge-passe-texte: #6b7280;
+
+  /*  Typographie  */
+  --police-principale: "Poppins", system-ui, sans-serif;
+
+  --taille-texte-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8rem);
+  --taille-texte-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+  --taille-texte-base: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --taille-texte-lg: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --taille-texte-xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --taille-texte-2xl: clamp(2.25rem, 1.7rem + 2.5vw, 3.75rem);
+
+  /*  Espacements */
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 12px;
+  --espace-4: 16px;
+  --espace-5: 24px;
+  --espace-6: 32px;
+  --espace-7: 48px;
+  --espace-8: 64px;
+
+  /*  Rayons  */
+  --rayon-sm: 8px;
+  --rayon-md: 16px;
+  --rayon-pill: 9999px;
+
+  /*  Icônes  */
+  --taille-icone: 20px;
+  --taille-icone-sm: 16px;
+
+  /*  Ombres et transitions  */
+  --ombre-legere: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --ombre-moyenne: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --transition-rapide: 0.2s ease;
+  --transition-douce: 0.35s ease;
+
+  /*  Structure  */
+  --largeur-max-contenu: 1200px;
+}
+
+[data-theme="sombre"] {
+  --couleur-fond: #0f172a;
+  --couleur-fond-secondaire: #1e293b;
+  --couleur-texte: #f1f5f9;
+  --couleur-texte-attenue: #94a3b8;
+  --couleur-pill-fond: #1e293b;
+  --couleur-bordure: #334155;
+}
+
+/*Rappel : une variable CSS ne peut pas être utilisée dans une
+  condition @media
+  */
