@@ -88,32 +88,32 @@
     </button>
   </header>
 
-  <main class="events-page">
+  <main class="page-evenements">
     
-    <section class="carousel-section">
-      <div class="carousel-container">
-        <img id="event1" src="../images/templates/image1.png" alt="Membres de la communauté C2P présent au synca 2026" />
-        <img id="event2" src="../images/templates/partenaria.png" alt="partenaria" />
-        <img id="event3" src="../images/templates/photo1.jpeg" alt="Menbre de la communauté depuis 2025" />
+    <section class="carrousel">
+      <div class="carrousel__piste">
+        <img id="evenement-1" class="carrousel__image" src="../images/templates/image1.png" alt="Membres de la communauté C2P présent au synca 2026" />
+        <img id="evenement-2" class="carrousel__image" src="../images/templates/partenaria.png" alt="partenaria" />
+        <img id="evenement-3" class="carrousel__image" src="../images/templates/photo1.jpeg" alt="Menbre de la communauté depuis 2025" />
       </div>
-      <div class="carousel-nav">
-        <a href="#event1" class="carousel-dot" aria-label="Afficher la photo 1"></a>
-        <a href="#event2" class="carousel-dot" aria-label="Afficher la photo 2"></a>
-        <a href="#event3" class="carousel-dot" aria-label="Afficher la photo 3"></a>
+      <div class="carrousel__navigation">
+        <a href="#evenement-1" class="carrousel__indicateur" aria-label="Afficher la photo 1"></a>
+        <a href="#evenement-2" class="carrousel__indicateur" aria-label="Afficher la photo 2"></a>
+        <a href="#evenement-3" class="carrousel__indicateur" aria-label="Afficher la photo 3"></a>
       </div>
     </section>
 
     <!-- Titre et description -->
-    <section class="events-hero">
-      <h1 class="events-hero__title">La communauté C2P</h1>
-      <p class="events-hero__desc">Chez C2P, nous organisons couramment des webinaires où nous apprenons les bases du code pas à pas.</p>
+    <section class="introduction">
+      <h1 class="introduction__titre">La communauté C2P</h1>
+      <p class="introduction__description">Chez C2P, nous organisons couramment des webinaires où nous apprenons les bases du code pas à pas.</p>
     </section>
 
     <!-- Barre de recherche -->
-    <section class="search-section">
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="Rechercher un événement..." />
-        <button class="search-btn" aria-label="Rechercher">
+    <section class="recherche">
+      <div class="recherche__formulaire">
+        <input type="text" class="recherche__champ" placeholder="Rechercher un événement..." />
+        <button class="recherche__bouton" aria-label="Rechercher">
           <svg class="icone">
             <use href="#icone-recherche"></use>
           </svg>
@@ -122,9 +122,9 @@
     </section>
 
     <!--  Events / Calendrier -->
-    <div class="events-filter">
-      <button class="filter-btn active">Events</button>
-      <button class="filter-btn">
+    <div class="selecteur-vue">
+      <button class="selecteur-vue__option selecteur-vue__option--active">Events</button>
+      <button class="selecteur-vue__option">
         <svg class="icone">
           <use href="#icone-calendrier"></use>
         </svg>
@@ -133,19 +133,19 @@
     </div>
 
     <!-- Section : Événements en cours -->
-    <section class="events-block">
-      <h2 class="events-block__title">En cours</h2>
-      <div class="events-grid">
-        <article class="event-card">
-          <div class="event-card__header">
-            <span class="badge badge--actif">SESSION EN COURS</span>
-            <img src="../images/templates/web.png" alt="Promo Web" class="event-card__img" />
+    <section class="groupe-evenements">
+      <h2 class="groupe-evenements__titre">En cours</h2>
+      <div class="groupe-evenements__liste">
+        <article class="carte-evenement">
+          <div class="carte-evenement__en-tete">
+            <span class="statut-evenement statut-evenement--actif">SESSION EN COURS</span>
+            <img src="../images/templates/web.png" alt="Promo Web" class="carte-evenement__image" />
           </div>
-          <div class="event-card__body">
+          <div class="carte-evenement__contenu">
             <h3>Promo Web</h3>
             <p>Apprendre à créer un site web de zéro, HTML & CSS fondamentaux.</p>
-            <div class="event-card__footer">
-              <a href="#" class="btn-action">Voir <svg class="icone"><use href="#icone-fleche"></use></svg></a>
+            <div class="carte-evenement__actions">
+              <a href="#" class="carte-evenement__action">Voir <svg class="icone"><use href="#icone-fleche"></use></svg></a>
             </div>
           </div>
         </article>
@@ -153,19 +153,19 @@
     </section>
 
     <!-- Section : Événements passés -->
-    <section class="events-block">
-      <h2 class="events-block__title">Passé</h2>
-      <div class="events-grid">
-        <article class="event-card">
-          <div class="event-card__header">
-            <span class="badge badge--passe">SESSION PASSÉE</span>
-            <img src="../images/templates/python.png" alt="Introduction à Python" class="event-card__img" />
+    <section class="groupe-evenements">
+      <h2 class="groupe-evenements__titre">Passé</h2>
+      <div class="groupe-evenements__liste">
+        <article class="carte-evenement">
+          <div class="carte-evenement__en-tete">
+            <span class="statut-evenement statut-evenement--passe">SESSION PASSÉE</span>
+            <img src="../images/templates/python.png" alt="Introduction à Python" class="carte-evenement__image" />
           </div>
-          <div class="event-card__body">
+          <div class="carte-evenement__contenu">
             <h3>Introduction à Python</h3>
             <p>Programmation avec Python PAS à PAS. Session 2025.</p>
-            <div class="event-card__footer">
-              <a href="#" class="btn-action">Replay & ressources <svg class="icone"><use href="#icone-fleche"></use></svg></a>
+            <div class="carte-evenement__actions">
+              <a href="#" class="carte-evenement__action">Replay & ressources <svg class="icone"><use href="#icone-fleche"></use></svg></a>
             </div>
           </div>
         </article>

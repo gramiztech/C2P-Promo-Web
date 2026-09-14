@@ -79,25 +79,25 @@
     </button>
   </header>
 
-  <main class="page-rejoindre">
-    <section class="carte-formulaire">
-      <div class="en-tete-formulaire">
+    <main class="page-rejoindre">
+    <section class="formulaire-inscription">
+      <div class="formulaire-inscription__en-tete">
         <h1>Rejoindre C2P</h1>
         <p>Inscrivez-vous pour faire vos premiers pas en informatique avec nous.</p>
       </div>
 
-      <form class="formulaire-inscription" action="#" method="POST">
-        <div class="champ-formulaire">
+      <form class="formulaire-inscription__contenu" action="#" method="POST">
+        <div class="formulaire-inscription__champ">
           <label for="nom">Nom &amp; Prénoms</label>
           <input type="text" id="nom" name="nom" placeholder="Gramiz" required />
         </div>
 
-        <div class="champ-formulaire">
+        <div class="formulaire-inscription__champ">
           <label for="email">Adresse E-mail</label>
           <input type="email" id="email" name="email" placeholder="exemple@mail.com" required />
         </div>
 
-        <div class="champ-formulaire">
+        <div class="formulaire-inscription__champ">
           <label for="niveau">Niveau actuel</label>
           <select id="niveau" name="niveau">
             <option value="debutant">Débutant complet</option>
@@ -106,12 +106,12 @@
           </select>
         </div>
 
-        <div class="champ-formulaire">
+        <div class="formulaire-inscription__champ">
           <label for="motivations">Pourquoi souhaitez-vous rejoindre C2P ?</label>
           <textarea id="motivations" name="motivations" rows="4" placeholder="Décrivez vos objectifs..."></textarea>
         </div>
 
-        <button type="submit" class="bouton-valider">
+        <button type="submit" class="formulaire-inscription__bouton">
           Envoyer ma demande
           <svg class="icone">
             <use href="#icone-fleche"></use>
