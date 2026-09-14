@@ -1,0 +1,95 @@
+
+.page-rejoindre {
+  max-width: var(--largeur-max-contenu);
+  margin: 0 auto;
+  padding: var(--espace-5) var(--espace-4);
+  color: var(--couleur-texte);
+  font-family: var(--police-principale);
+}
+
+
+.carte-formulaire {
+  max-width: 550px;
+  margin: var(--espace-6) auto;
+  padding: var(--espace-6);
+  background-color: var(--couleur-pill-fond);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-md);
+  box-shadow: var(--ombre-legere);
+}
+
+.en-tete-formulaire {
+  text-align: center;
+  margin-bottom: var(--espace-5);
+}
+
+.en-tete-formulaire h1 {
+  font-size: var(--taille-texte-xl);
+  margin-bottom: var(--espace-2);
+}
+
+.en-tete-formulaire p {
+  font-size: var(--taille-texte-sm);
+  color: var(--couleur-texte-attenue);
+}
+
+
+.formulaire-inscription {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-4);
+}
+
+.champ-formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-2);
+}
+
+.champ-formulaire label {
+  font-size: var(--taille-texte-sm);
+  font-weight: 500;
+  color: var(--couleur-texte);
+}
+
+.champ-formulaire input,
+.champ-formulaire select,
+.champ-formulaire textarea {
+  padding: var(--espace-3);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-sm);
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: inherit;
+  font-size: var(--taille-texte-sm);
+  transition: border-color var(--transition-rapide);
+}
+
+.champ-formulaire input:focus,
+.champ-formulaire select:focus,
+.champ-formulaire textarea:focus {
+  outline: none;
+  border-color: var(--couleur-accent);
+}
+
+/* Bouton d'envoi */
+.bouton-valider {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espace-2);
+  padding: var(--espace-3) var(--espace-5);
+  border: none;
+  border-radius: var(--rayon-pill);
+  background-color: var(--couleur-cta-fond);
+  color: var(--couleur-cta-texte);
+  font-size: var(--taille-texte-base);
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: var(--espace-3);
+  transition: opacity var(--transition-rapide);
+}
+
+.bouton-valider:hover {
+  opacity: 0.9;
+}
