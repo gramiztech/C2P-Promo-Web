@@ -1,0 +1,194 @@
+/* Section d'accroche */
+.hero {
+  background-color: var(--couleur-fond-secondaire);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--espace-4);
+  padding: var(--espace-8) var(--espace-6);
+}
+
+.hero h1 {
+  font-size: var(--taille-texte-2xl);
+  color: var(--couleur-texte);
+  max-width: 900px;
+  margin: 0;
+}
+
+.hero__accent {
+  color: var(--couleur-accent);
+}
+
+.hero__code {
+  font-size: var(--taille-texte-2xl);
+}
+
+.hero p {
+  font-size: var(--taille-texte-base);
+  color: var(--couleur-texte-attenue);
+  max-width: 700px;
+  margin: 0;
+}
+
+.titre-section {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+  font-size: var(--taille-texte-xl);
+  margin: 0 0 var(--espace-6);
+}
+
+.spotlight__texte p {
+  color: var(--couleur-texte-attenue);
+}
+
+.spotlight__texte p strong {
+  color: var(--couleur-texte);
+}
+
+/* Section À la Une, mise en avant de la formation en cours */
+
+.section-formation {
+  max-width: var(--largeur-max-contenu);
+  margin: 0 auto;
+  padding: var(--espace-8) var(--espace-6);
+}
+
+
+
+.spotlight {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espace-4);
+  margin-top: var(--espace-6);
+}
+
+.spotlight__texte,
+.spotlight__image {
+  flex: 1 1 400px;
+}
+
+.spotlight__texte {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-3);
+}
+
+.spotlight__texte h2 {
+  font-size: var(--taille-texte-xl);
+  margin: 0;
+}
+
+.spotlight__infos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-2);
+  color: var(--couleur-texte-attenue);
+}
+
+.spotlight__infos li {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+}
+
+.spotlight__image {
+  overflow: hidden;
+  border-radius: var(--rayon-md);
+  box-shadow: var(--ombre-moyenne);
+}
+
+.spotlight__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--rayon-md);
+  box-shadow: var(--ombre-moyenne);
+}
+
+/* Section Nos temps forts */
+.temps-forts {
+  max-width: var(--largeur-max-contenu);
+  margin: 0 auto;
+  padding: var(--espace-7) var(--espace-6);
+}
+
+.temps-forts__titre {
+  font-size: var(--taille-texte-xl);
+  margin-bottom: var(--espace-6);
+}
+
+/* Grille en auto-fit : le nombre de colonnes s'ajuste tout seul
+   selon la largeur de l'écran, pas besoin de media query ici */
+.grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espace-6);
+}
+
+.carte-moment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-2);
+  padding: var(--espace-4);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-md);
+}
+
+.carte-moment img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--rayon-sm);
+}
+
+.carte-moment h3 {
+  margin: 0;
+  font-size: var(--taille-texte-lg);
+}
+
+.carte-moment p {
+  margin: 0;
+  color: var(--couleur-texte-attenue);
+  font-size: var(--taille-texte-sm);
+}
+
+/* Adaptation mobile propre à cette page */
+@media (max-width: 767px) {
+  .hero {
+    padding: var(--espace-6) var(--espace-4);
+  }
+
+  .hero h1 {
+    font-size: var(--taille-texte-xl);
+  }
+
+  .spotlight {
+    flex-direction: column;
+  }
+
+  .section-formation {
+    padding: var(--espace-6) var(--espace-4) var(--espace-5);
+  }
+
+  .temps-forts {
+    padding-top: var(--espace-5);
+  }
+
+  .bouton-cta {
+    width: 100%;
+    justify-content: center;
+    padding: var(--espace-3) var(--espace-4);
+    font-size: var(--taille-texte-sm);
+    text-align: center;
+  }
+  .spotlight__texte,
+  .spotlight__image {
+    flex-basis: auto;
+  }
+}

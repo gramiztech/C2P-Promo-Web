@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Premiers Pas - Votre communauté pour apprendre le code</title>
+  <link rel="stylesheet" href="./styles/variables.css" />
+  <link rel="stylesheet" href="./styles/composants.css" />
+  <link rel="stylesheet" href="./styles/responsivite.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <svg style="display: none">
+    <symbol id="icone-communaute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+
+    <symbol id="icone-cadeau" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="8" width="18" height="4" />
+      <path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+      <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8" />
+      <path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8" />
+    </symbol>
+
+    <symbol id="icone-personne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="7" r="4" />
+      <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
+    </symbol>
+
+    <symbol id="icone-soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </symbol>
+
+    <symbol id="icone-fleche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </symbol>
+
+    <symbol id="icone-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 6h18M3 12h18M3 18h18" />
+    </symbol>
+
+    <symbol id="icone-calendrier" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+    </symbol>
+
+    <symbol id="icone-outil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4z" />
+    </symbol>
+
+    <symbol id="icone-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 11v3a2 2 0 0 0 2 2h1l2 5 2-1-1.5-4H10l9 4V6l-9 4H3z" />
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <a href="/index.html" class="site-header__logo">
+      <img src="./images/logoC2P.png" alt="Logo Premiers Pas" />
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox" />
+    <label for="menu-toggle" class="menu-toggle-bouton" aria-label="Ouvrir le menu">
+      <svg class="icone">
+        <use href="#icone-menu"></use>
+      </svg>
+    </label>
+
+    <nav class="pill-nav" aria-label="Navigation principale">
+      <a href="/pages/membres.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-communaute"></use>
+        </svg>
+        Communauté
+      </a>
+      <a href="/pages/events.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-cadeau"></use>
+        </svg>
+        Événements
+      </a>
+      <a href="/pages/inscription.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-personne"></use>
+        </svg>
+        Rejoindre
+      </a>
+    </nav>
+
+    <button class="theme-toggle" aria-label="Basculer le thème clair/sombre">
+      <svg class="icone">
+        <use href="#icone-soleil"></use>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>
+        Votre <span class="hero__accent">PREMIER</span> Pas En Informatique,
+        plus qu'une communauté : un endroit parfait pour comprendre le
+        <span class="hero__code">CODE</span>.
+      </h1>
+      <p>
+        Professionnels en reconversion || Nouveaux bacheliers || Débutant ou
+        senior souhaitant revoir les bases en programmation ? Vous êtes au bon
+        endroit.
+      </p>
+      <a href="/pages/inscription.html" class="bouton-cta">
+        <svg class="icone">
+          <use href="#icone-personne"></use>
+        </svg>
+        Rejoindre la communauté des Devs Macon
+      </a>
+    </section>
+
+    <section class="section-formation">
+      <h2 class="titre-section">
+        <svg class="icone">
+          <use href="#icone-megaphone"></use>
+        </svg>
+        À la Une
+      </h2>
+
+      <div class="spotlight">
+        <div class="spotlight__texte">
+          <span class="badge badge--actif">En cours</span>
+          <h2>Formation en Développement Web</h2>
+          <p>
+            Maîtrisez les fondamentaux du code HTML, CSS et JavaScript. Créez
+            des sites web interactifs et responsives.
+          </p>
+          <ul class="spotlight__infos">
+            <li>
+              <svg class="icone">
+                <use href="#icone-calendrier"></use>
+              </svg>
+              Séances les vendredis
+            </li>
+            <li>
+              <svg class="icone">
+                <use href="#icone-outil"></use>
+              </svg> Ateliers
+              pratiques les dimanches
+            </li>
+          </ul>
+          <p><strong>Date :</strong> jusqu'au 29 septembre</p>
+          <a href="/pages/membres.html" class="lien-action">
+            En savoir plus
+            <svg class="icone">
+              <use href="#icone-fleche"></use>
+            </svg>
+          </a>
+        </div>
+
+        <div class="spotlight__image">
+          <img src="./images/illustrations/formation-dev-web.png"
+            alt="Illustration de la formation développement web" />
+        </div>
+      </div>
+    </section>
+
+    <section class="temps-forts">
+      <h2 class="temps-forts__titre">Nos temps forts</h2>
+
+      <div class="grille-cartes">
+        <article class="carte-moment">
+          <span class="badge badge--passe">Session passée</span>
+          <img src="./images/illustrations/session-python.png" alt="Introduction à Python" />
+          <h3>Introduction à Python</h3>
+          <p>Programmation avec Python pas à pas. Session 2025.</p>
+          <a href="/pages/events.html" class="lien-action">
+            Revoir la session
+            <svg class="icone">
+              <use href="#icone-fleche"></use>
+            </svg>
+          </a>
+        </article>
+
+        <article class="carte-moment">
+          <span class="badge badge--actif">Session en cours</span>
+          <img src="./images/illustrations/formation-promo-web.png" alt="Promotion Développement Web" />
+          <h3>Promo Web</h3>
+          <p>Apprendre à créer un site web de zéro.</p>
+          <a href="/pages/events.html" class="lien-action">
+            Voir l'événement
+            <svg class="icone">
+              <use href="#icone-fleche"></use>
+            </svg>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__colonne">
+      <h4>Navigation</h4>
+      <a href="/index.html">Accueil</a>
+      <a href="/pages/membres.html">Communauté</a>
+      <a href="/pages/events.html">Événements</a>
+      <a href="/pages/inscription.html">Rejoindre</a>
+      <a href="/pages/about.html">À propos</a>
+    </div>
+
+    <div class="site-footer__colonne">
+      <h4>Réseaux</h4>
+      <a href="https://linkedin.com/company/c2p">LinkedIn</a>
+      <a href="https://github.com/c2p">GitHub</a>
+    </div>
+
+    <div class="site-footer__colonne">
+      <h4>Partenaires</h4>
+      <a href="#">Tech Community Clubs</a>
+    </div>
+
+    <p class="site-footer__copyright">© 2026 C2P - Lomé, Togo</p>
+  </footer>
+</body>
+
+</html>
