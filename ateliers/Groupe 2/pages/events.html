@@ -1,37 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" data-theme="clair">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Événements</title>
-  <link rel="stylesheet" href="../styles/events.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPremiers Pas - Événements</title>
+  <link rel="stylesheet" href="../styles/variables.css" />
+  <link rel="stylesheet" href="../styles/composants.css" />
+  <link rel="stylesheet" href="../styles/responsivite.css" />
+  <link rel="stylesheet" href="../styles/events.css" />
 </head>
+
 <body>
-  <header>
-     <nav> 
-         <a href=""><img src="../images/templates/icons/menu-bar.png" alt="bar menu" id="menu"  height="35"/></a>
-         <ul>
-           <li><a href="./communaute.html">accueil</a></li>
-           <li><a href="./events.html">events</a></li>
-           <li><a href="rejoindre.html">Rejoindre</a></li>
-         </ul>
-         <span><img src="" alt="icône research"></span>
-         <span> <input  type="search" name="reseach" id="reseach" placeholder= "   Rechercher un évènement"></span>
-         
-     </nav>
+
+  <!-- Sprite d'icônes -->
+  <svg style="display: none;">
+    <symbol id="icone-communaute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+    <symbol id="icone-cadeau" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="8" width="18" height="4" />
+      <path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+      <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8" />
+      <path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8" />
+    </symbol>
+    <symbol id="icone-personne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="7" r="4" />
+      <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
+    </symbol>
+    <symbol id="icone-soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </symbol>
+    <symbol id="icone-fleche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </symbol>
+    <symbol id="icone-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 6h18M3 12h18M3 18h18" />
+    </symbol>
+    <symbol id="icone-calendrier" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+    </symbol>
+    <symbol id="icone-recherche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <a href="../index.html" class="site-header__logo">
+      <img src="../images/logoC2P.png" alt="Logo Premiers Pas" />
+    </a>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox" />
+    <label for="menu-toggle" class="menu-toggle-bouton" aria-label="Ouvrir le menu">
+      <svg class="icone">
+        <use href="#icone-menu"></use>
+      </svg>
+    </label>
+    <nav class="pill-nav" aria-label="Navigation principale">
+      <a href="./pages/membres.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-communaute"></use>
+        </svg>
+        Communauté
+      </a>
+      <a href="./events.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-cadeau"></use>
+        </svg>
+        Événements
+      </a>
+      <a href="./rejoindre.html" class="pill-nav__item">
+        <svg class="icone">
+          <use href="#icone-personne"></use>
+        </svg>
+        Rejoindre
+      </a>
+    </nav>
+    <button class="theme-toggle" aria-label="Basculer le thème clair/sombre">
+      <svg class="icone">
+        <use href="#icone-soleil"></use>
+      </svg>
+    </button>
   </header>
-   <main>
-     <div id="">
-        <img src="" id="event1" alt="photo des menbres communauté c2p présents au Synca conf 2026" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-     </div>
-     <span href="#event1">.</span>
-     <span>.</span>
-     <span>.</span>
-     
-     <p>Chez c2p, nous organisons  couramment  des webinaires où nous apprenons des bases </p>
-   </main>
+
+  <main class="page-evenements">
+    
+    <section class="carrousel">
+      <div class="carrousel__piste">
+        <img id="evenement-1" class="carrousel__image" src="../images/templates/image1.png" alt="Membres de la communauté C2P présent au synca 2026" />
+        <img id="evenement-2" class="carrousel__image" src="../images/templates/partenaria.png" alt="partenaria" />
+        <img id="evenement-3" class="carrousel__image" src="../images/templates/photo1.jpeg" alt="Menbre de la communauté depuis 2025" />
+      </div>
+      <div class="carrousel__navigation">
+        <a href="#evenement-1" class="carrousel__indicateur" aria-label="Afficher la photo 1"></a>
+        <a href="#evenement-2" class="carrousel__indicateur" aria-label="Afficher la photo 2"></a>
+        <a href="#evenement-3" class="carrousel__indicateur" aria-label="Afficher la photo 3"></a>
+      </div>
+    </section>
+
+    <!-- Titre et description -->
+    <section class="introduction">
+      <h1 class="introduction__titre">La communauté C2P</h1>
+      <p class="introduction__description">Chez C2P, nous organisons couramment des webinaires où nous apprenons les bases du code pas à pas.</p>
+    </section>
+
+    <!-- Barre de recherche -->
+    <section class="recherche">
+      <div class="recherche__formulaire">
+        <input type="text" class="recherche__champ" placeholder="Rechercher un événement..." />
+        <button class="recherche__bouton" aria-label="Rechercher">
+          <svg class="icone">
+            <use href="#icone-recherche"></use>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!--  Events / Calendrier -->
+    <div class="selecteur-vue">
+      <button class="selecteur-vue__option selecteur-vue__option--active">Events</button>
+      <button class="selecteur-vue__option">
+        <svg class="icone">
+          <use href="#icone-calendrier"></use>
+        </svg>
+        Calendrier
+      </button>
+    </div>
+
+    <!-- Section : Événements en cours -->
+    <section class="groupe-evenements">
+      <h2 class="groupe-evenements__titre">En cours</h2>
+      <div class="groupe-evenements__liste">
+        <article class="carte-evenement">
+          <div class="carte-evenement__en-tete">
+            <span class="statut-evenement statut-evenement--actif">SESSION EN COURS</span>
+            <img src="../images/templates/web.png" alt="Promo Web" class="carte-evenement__image" />
+          </div>
+          <div class="carte-evenement__contenu">
+            <h3>Promo Web</h3>
+            <p>Apprendre à créer un site web de zéro, HTML & CSS fondamentaux.</p>
+            <div class="carte-evenement__actions">
+              <a href="#" class="carte-evenement__action">Voir <svg class="icone"><use href="#icone-fleche"></use></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section : Événements passés -->
+    <section class="groupe-evenements">
+      <h2 class="groupe-evenements__titre">Passé</h2>
+      <div class="groupe-evenements__liste">
+        <article class="carte-evenement">
+          <div class="carte-evenement__en-tete">
+            <span class="statut-evenement statut-evenement--passe">SESSION PASSÉE</span>
+            <img src="../images/templates/python.png" alt="Introduction à Python" class="carte-evenement__image" />
+          </div>
+          <div class="carte-evenement__contenu">
+            <h3>Introduction à Python</h3>
+            <p>Programmation avec Python PAS à PAS. Session 2025.</p>
+            <div class="carte-evenement__actions">
+              <a href="#" class="carte-evenement__action">Replay & ressources <svg class="icone"><use href="#icone-fleche"></use></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__colonne">
+      <h4>Navigation</h4>
+      <a href="./index.html">Accueil</a>
+      <a href="./membres.html">Communauté</a>
+      <a href="./events.html">Événements</a>
+      <a href="./inscription.html">Rejoindre</a>
+      <a href="./about.html">À propos</a>
+    </div>
+
+    <div class="site-footer__colonne">
+      <h4>Réseaux</h4>
+      <a href="https://www.linkedin.com/company/c2p-community/">LinkedIn</a>
+      <a href="https://github.com/Paskod121/C2P-Python-Essentiel.git">GitHub</a>
+    </div>
+
+    <div class="site-footer__colonne">
+      <h4>Partenaires</h4>
+      <a href="https://tcc.hyver.org/">Tech Community Clubs</a>
+    </div>
+
+    <p class="site-footer__copyright">© 2026 C2P - Lomé, Togo</p>
+  </footer>
+
 </body>
+
 </html>
